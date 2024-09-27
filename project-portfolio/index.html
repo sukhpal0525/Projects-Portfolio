@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto+Mono:wght@400&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollToPlugin.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/tippy.js@6/animations/scale.css" rel="stylesheet">
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .hero-section {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none; /* Disable interactions with the canvas */
+        }
+
+        .down-arrow {
+            position: absolute;
+            bottom: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: #fff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 24px;
+            color: #000;
+            z-index: 2;
+            animation: bounce 1.5s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .tippy-box[data-theme~='light'] {
+          background-color: #2c2c2c;
+          color: #ffffff;
+          border-radius: 8px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+          padding: 15px;
+        }
+
+        .tippy-box[data-theme~='light'] h5 {
+          font-size: 1.1rem;
+          font-weight: bold;
+          margin-bottom: 8px;
+        }
+
+        .tippy-box[data-theme~='light'] p {
+          font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero-section d-flex flex-column justify-content-center align-items-center text-center position-relative">
+        <canvas id="starfield"></canvas>
+        <h1 class="display-1 fw-bold" style="z-index: 1;">Hi, I'm Sukhpal</h1>
+        <h2 class="text-secondary mb-5" style="z-index: 1;">Full Stack Developer</h2>
+        <div class="down-arrow" onclick="scrollToAbout(event)" style="z-index: 1;">&#x2193;</div>
+    </div>
+
+
+
+    <!-- Projects -->
+
+    <div class="about-section text-center vh-100 py-5 bg-dark text-white" id="about">
+        <h3 class="projects-title mb-5 fs-1">My Projects</h3>
+        <div class="container">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 justify-content-center">
+                <div class="col">
+                    <div class="card bg-dark border-light h-100" id="card1">
+                        <img src="" class="card-img-top" style="background-color: #343a40; width: 100%; height: 250px;">
+                        <div class="card-body text-center" style="padding: 10px; border-top: 1px solid #fff;">
+                            <h5 class="card-title text-light align-middle" style="font-size: 1rem;">Project 1</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card bg-dark border-light h-100">
+                        <img src="" class="card-img-top" style="background-color: #343a40; width: 100%; height: 250px;">
+                        <div class="card-body text-center" style="padding: 10px; border-top: 1px solid #fff;">
+                            <h5 class="card-title text-light" style="font-size: 1rem;">Project 2</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-dark border-light h-100">
+                        <img src="" class="card-img-top" style="background-color: #343a40; width: 100%; height: 250px;">
+                        <div class="card-body text-center" style="padding: 10px; border-top: 1px solid #fff;">
+                            <h5 class="card-title text-light" style="font-size: 1rem;">Project 3</h5>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Row 2 -->
+
+                <div class="col">
+                    <div class="card bg-dark border-light h-100">
+                        <img src="" class="card-img-top" style="background-color: #343a40; width: 100%; height: 250px;">
+                        <div class="card-body text-center" style="padding: 10px; border-top: 1px solid #fff;">
+                            <h5 class="card-title text-light" style="font-size: 1rem;">Project 4</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-dark border-light h-100">
+                        <img src="" class="card-img-top" style="background-color: #343a40; width: 100%; height: 250px;">
+                        <div class="card-body text-center" style="padding: 10px; border-top: 1px solid #fff;">
+                            <h5 class="card-title text-light" style="font-size: 1rem;">Project 5</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-dark border-light h-100">
+                        <img src="" class="card-img-top" style="background-color: #343a40; width: 100%; height: 250px;">
+                        <div class="card-body text-center" style="padding: 10px; border-top: 1px solid #fff;">
+                            <h5 class="card-title text-light" style="font-size: 1rem;">Project 6</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let scene, camera, renderer, stars, starGeo, starCount = 6000, starRange = 1000;
+
+        function init() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 10000);
+            renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('starfield'), alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+
+            starGeo = new THREE.BufferGeometry();
+            let positions = new Float32Array(starCount * 3);
+            for (let i = 0; i < starCount; i++) {
+                positions.set([Math.random() * starRange - starRange / 2, Math.random() * starRange - starRange / 2, Math.random() * starRange - starRange / 2], i * 3);
+            }
+            starGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+            let starColors = [0xffccff, 0xff9933, 0x66ffff, 0x99ff66];
+            let colorArray = new Float32Array(starCount * 3);
+            for (let i = 0; i < starCount; i++) {
+                let color = new THREE.Color(starColors[Math.floor(Math.random() * starColors.length)]);
+                colorArray.set([color.r, color.g, color.b], i * 3);
+            }
+            starGeo.setAttribute('color', new THREE.BufferAttribute(colorArray, 3));
+
+            stars = new THREE.Points(starGeo, new THREE.PointsMaterial({ vertexColors: true, size: 0.7 }));
+            scene.add(stars);
+
+            camera.position.z = 200;
+            animate();
+        }
+
+        function wrapStars() {
+            let positions = starGeo.attributes.position.array;
+            for (let i = 0; i < starCount; i++) {
+                if (positions[i * 3 + 2] > camera.position.z + starRange / 2) positions[i * 3 + 2] -= starRange;
+                if (positions[i * 3 + 2] < camera.position.z - starRange / 2) positions[i * 3 + 2] += starRange;
+            }
+            starGeo.attributes.position.needsUpdate = true;
+        }
+
+        function animate() {
+            stars.rotation.y += 0.001;
+            wrapStars();
+            renderer.render(scene, camera);
+            requestAnimationFrame(animate);
+        }
+
+        document.querySelector('.hero-section').addEventListener('mousemove', (e) => {
+            stars.rotation.y = (e.clientX / window.innerWidth) * 2 - 1;
+            stars.rotation.x = (e.clientY / window.innerHeight) * 2 - 1;
+        });
+
+        window.addEventListener('click', (event) => {
+            if (!document.querySelector('.about-section').contains(event.target)) {
+                gsap.to(camera.position, { duration: 1.5, z: camera.position.z - 50, ease: "power3.out", onUpdate: wrapStars });
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        function scrollToAbout(event) {
+            event.stopPropagation();
+            gsap.to(window, { duration: 1, scrollTo: "#about", ease: "power2.inOut" });
+        }
+
+        init();
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
