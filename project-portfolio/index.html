@@ -160,7 +160,41 @@
             </div>
         </div>
     </div>
-    
+    <script>
+        tippy('#card1', {
+            content: `
+                    <div style="padding: 12px; font-size: 0.9rem; width: 400px; border: 1px solid #ffffff; background-color: #1e1e1e; border-radius: 8px;">
+                      <h4 style="margin-bottom: 20px; text-align: center; color: #f4f4f4; font-weight: bold;">Project 1</h4>
+
+                      <div style="margin-bottom: 10px; text-align: left;">
+                        <span><strong>Technologies:</strong><br> HTML, CSS, JavaScript, Bootstrap, Laravel</span>
+                      </div>
+
+                      <hr style="border: 1px solid #444; margin: 10px 0;">
+
+                      <div style="padding-top: 10px; text-align: left;">
+                        <span><strong>Features:</strong><br> Responsive design, REST API, Authentication.</span>
+                      </div>
+
+                      <hr style="border: 1px solid #444; margin-top: 10px;">
+                    </div>
+                    `,
+            allowHTML: true,
+            animation: 'scale',
+            placement: 'top',
+            followCursor: true,
+            theme: 'dark',
+            delay: [0, 0],
+            duration: [100, 50],
+            maxWidth: 400,
+            offset: [0, 20],
+            interactive: false,
+            onShow(instance) {
+                instance.popper.querySelector('.tippy-box').style.backgroundColor = 'transparent';
+            }
+        });
+    </script>
+
     <script>
         let scene, camera, renderer, stars, starGeo, starCount = 6000, starRange = 1000;
 
