@@ -40,23 +40,6 @@
             pointer-events: none; /* Disable interactions with the canvas */
         }
 
-        .down-arrow {
-            position: absolute;
-            bottom: 20px;
-            width: 50px;
-            height: 50px;
-            background-color: #fff;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            font-size: 24px;
-            color: #000;
-            z-index: 2;
-            animation: bounce 1.5s infinite;
-        }
-
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
             40% { transform: translateY(-10px); }
@@ -76,6 +59,13 @@
           padding: 15px;
         }
 
+        .down-arrow {
+            cursor: pointer;
+            font-size: 24px;
+            color: #000;
+            animation: bounce 1.5s infinite;
+        }
+
         .tippy-box[data-theme~='light'] h5 {
           font-size: 1.1rem;
           font-weight: bold;
@@ -93,7 +83,9 @@
         <canvas id="starfield"></canvas>
         <h1 class="display-1 fw-bold" style="z-index: 1;">Hi, I'm Sukhpal</h1>
         <h2 class="text-secondary mb-5" style="z-index: 1;">Full Stack Developer</h2>
-        <div class="down-arrow" onclick="scrollToAbout(event)" style="z-index: 1;">&#x2193;</div>
+        <div class="down-arrow position-absolute bottom-0 bg-light rounded-circle d-flex justify-content-center align-items-center mb-4" onclick="scrollToAbout(event)" style="z-index: 1; width: 50px; height: 50px;">
+            <i class="fas fa-chevron-down"></i>
+        </div>
     </div>
 
 
