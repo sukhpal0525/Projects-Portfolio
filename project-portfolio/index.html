@@ -14,6 +14,8 @@
     <link href="https://unpkg.com/tippy.js@6/animations/scale.css" rel="stylesheet">
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/CustomEase.min.js"></script>
+
 
 
     <style>
@@ -254,7 +256,12 @@
 
         function scrollToAbout(event) {
             event.stopPropagation();
-            gsap.to(window, {duration: 0.5, scrollTo: "#about", ease: "power1.inOut"});
+            CustomEase.create("customEase", "M0,0 C0.95,0.05 0.75,0.8 1,1");
+            gsap.to(window, {
+                duration: 0.7,
+                scrollTo: "#about",
+                ease: "customEase"
+            });
         }
 
         init();
