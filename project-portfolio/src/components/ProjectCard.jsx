@@ -1,5 +1,4 @@
-import React from 'react';
-
+/* eslint-disable react/prop-types */
 function ProjectCard({ title, technologies }) {
     return (
         <div className="col">
